@@ -7,8 +7,13 @@ import javax.microedition.khronos.opengles.GL10
 
 class MyGLRenderer : GLSurfaceView.Renderer {
 
+    var triangle : Triangle = Triangle()
+
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         GLES20.glClearColor(0f, 0f, 0f, 1f)
+
+        triangle = Triangle()
+
     }
 
     override fun onDrawFrame(gl: GL10?) {
@@ -20,3 +25,4 @@ class MyGLRenderer : GLSurfaceView.Renderer {
     }
 
 }
+
