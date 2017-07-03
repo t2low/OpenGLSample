@@ -5,7 +5,7 @@ import android.opengl.GLSurfaceView
 
 class MyGLSurfaceView(context: Context) : GLSurfaceView(context) {
 
-    val renderer : MyGLRenderer
+    val renderer: MyGLRenderer
 
     init {
         setEGLContextClientVersion(2)

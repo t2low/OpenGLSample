@@ -6,7 +6,7 @@ import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
 
-    var glView : GLSurfaceView? = null
+    var glView: GLSurfaceView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
