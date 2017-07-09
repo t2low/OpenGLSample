@@ -15,12 +15,12 @@ class Triangle {
         )
     }
 
-
     private val vertexShaderCode =
+            "uniform mat4 uMVPMatrix;" +
             "attribute vec4 vPosition;" +
-                    "void main() {" +
-                    "  gl_Position = vPosition;" +
-                    "}"
+            "void main() {" +
+            "  gl_Position = uMVPMatrix * vPosition;" +
+            "}"
 
     private val fragmentShaderCode =
             "precision mediump float;" +
@@ -28,6 +28,8 @@ class Triangle {
                     "void main() {" +
                     "  gl_FragColor = vColor;" +
                     "}"
+
+    private var mvpMatrixHandle = 0;
 
     val vertexBuffer: FloatBuffer
     var color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)
@@ -56,7 +58,7 @@ class Triangle {
         GLES20.glLinkProgram(program)
     }
 
-    fun draw() {
+    fun draw(mvpMatrix : FloatArray) {
         GLES20.glUseProgram(program)
 
         positionHandle = GLES20.glGetAttribLocation(program, "vPosition")
@@ -65,6 +67,10 @@ class Triangle {
 
         colorHandle = GLES20.glGetUniformLocation(program, "vColor")
         GLES20.glUniform4fv(colorHandle, 1, color, 0)
+
+        mvpMatrixHandle = GLES20.glGetUniformLocation(program, "uMVPMatrix")
+        GLES20.glUniformMatrix4fv(mvpMatrixHandle, 1, false, mvpMatrix, 0)
+
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount)
         GLES20.glDisableVertexAttribArray(positionHandle)
     }
