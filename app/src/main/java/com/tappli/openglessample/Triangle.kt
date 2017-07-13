@@ -32,7 +32,7 @@ class Triangle {
     private var mvpMatrixHandle = 0;
 
     val vertexBuffer: FloatBuffer
-    var color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)
+    val color = floatArrayOf(0.63671875f, 0.76953125f, 0.22265625f, 1.0f)
     val program: Int
 
     var positionHandle: Int = 0

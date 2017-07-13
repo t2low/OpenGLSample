@@ -17,7 +17,7 @@ fun loadShader(type: Int, shaderCode: String): Int {
 
 class MyGLRenderer : GLSurfaceView.Renderer {
 
-    var triangle: Triangle = Triangle()
+    lateinit var triangle: Triangle
 
     private val mvpMatrix = FloatArray(16, {i -> 0.0f})
     private val projectionMatrix = FloatArray(16, {i -> 0.0f})

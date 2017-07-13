@@ -9,7 +9,7 @@ import android.view.WindowManager
 
 class MainActivity : AppCompatActivity() {
 
-    var glView: GLSurfaceView? = null
+    lateinit var glView: GLSurfaceView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        glView?.onResume()
+        glView.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        glView?.onPause()
+        glView.onPause()
     }
 }
